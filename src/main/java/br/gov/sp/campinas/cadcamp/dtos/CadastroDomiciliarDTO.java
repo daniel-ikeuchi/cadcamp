@@ -13,7 +13,7 @@ import lombok.Setter;
 @EqualsAndHashCode
 public class CadastroDomiciliarDTO {
 
-	private String tipoImovel;
+	private long tipoImovel;
 	private int stAnimaisNoDomicilio;
 	private int statusTermoRecusa;
 	private int stGato;
@@ -21,5 +21,6 @@ public class CadastroDomiciliarDTO {
 	private int stPassaro;
 	private int stOutros;
 	private int qtdAnimaisNodomicilio;
+	private long situacaoMoradia;
 	
 }

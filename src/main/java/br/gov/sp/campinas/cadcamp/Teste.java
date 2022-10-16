@@ -8,7 +8,7 @@ public class Teste {
 
 	public static void main(String[] args) {
 		CadastroDomiciliarDTO cadDomDto = new CadastroDomiciliarDTO();
-		cadDomDto.setTipoImovel("DOMICILIO");
+		cadDomDto.setTipoImovel(1);
 		cadDomDto.setStAnimaisNoDomicilio(1);
 		cadDomDto.setStatusTermoRecusa(0);
 		cadDomDto.setStGato(0);
@@ -17,7 +17,10 @@ public class Teste {
 		cadDomDto.setStOutros(1);
 		cadDomDto.setQtdAnimaisNodomicilio(1);
 		
-		CadastroDomiciliarThrift cadastroDomiciliarThrift = new FichaCadastroDomiciliar().cadastroDomiciliarThrift(cadDomDto);
+		cadDomDto.setSituacaoMoradia(Long.parseLong("77"));
+		
+		FichaCadastroDomiciliar ficha = new FichaCadastroDomiciliar(cadDomDto);
+		CadastroDomiciliarThrift cadastroDomiciliarThrift = ficha.novoCadastroDomiciliarThrift();
 		
 		System.out.println("Teste Ok");
 	}
