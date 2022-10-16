@@ -81,8 +81,23 @@ public class FichaCadastroDomiciliar {
 				&& tipoImovel != TipoImovel.ESTABELECIMENTO_RELIGIOSO.getCode()
 				&& tipoImovel != TipoImovel.OUTROS.getCode() && statusTermoRecusa != 1) {
 
-			long situacaoMoradia = dto.getSituacaoMoradia();
-			condMoradiaThft.setSituacaoMoradiaPosseTerra(situacaoMoradia);
+			condMoradiaThft.setSituacaoMoradiaPosseTerra(dto.getSituacaoMoradia());
+			condMoradiaThft.setAbastecimentoAgua(dto.getAbastecimentoAgua());
+			// TODO #2 areaProducaoRural
+			condMoradiaThft.setDestinoLixo(dto.getDestinoLixo());
+			condMoradiaThft.setFormaEscoamentoBanheiro(dto.getEscoamentoBanheiro());
+			condMoradiaThft.setLocalizacao(dto.getLocalizacao());
+			
+			// #6 materialPredominanteParedesExtDomicilio, #7 nuComodos
+			if (tipoImovel != TipoImovel.ABRIGO.getCode() && tipoImovel != TipoImovel.INSTITUICAO_PERMANENCIA.getCode() &&
+					tipoImovel != TipoImovel.UNIDADE_PRISIONAL.getCode() && tipoImovel != TipoImovel.DELEGACIA.getCode() &&
+					tipoImovel != TipoImovel.UNIDADE_SOCIO_EDUCATIVA.getCode()) {
+				condMoradiaThft.setMaterialPredominanteParedesExtDomicilio(dto.getMaterialPredominante());
+				
+				if (Integer.parseInt(dto.getNuComodos()) > 0) {
+					condMoradiaThft.setNuComodos(dto.getNuComodos());
+				}
+			}
 
 			cadDomThft.setCondicaoMoradia(condMoradiaThft);
 		}
